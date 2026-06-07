@@ -8,11 +8,7 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "name",
-            "name_ru",
-            "name_ky",
             "description",
-            "description_ru",
-            "description_ky",
             "image",
             "order",
         )
@@ -23,7 +19,7 @@ class ServiceCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ServiceCategory
-        fields = ("id", "name", "name_ru", "name_ky", "slug", "services")
+        fields = ("id", "name", "slug", "services")
 
     def get_services(self, obj):
         active = obj.services.filter(is_active=True)
