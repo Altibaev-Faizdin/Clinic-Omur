@@ -1,9 +1,9 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework import mixins, viewsets
 from .models import ServiceCategory, Service
 from .serializers import ServiceCategorySerializer, ServiceSerializer
 
 
-class ServiceCategoryListView(ListAPIView):
+class ServiceCategoryViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = ServiceCategorySerializer
 
     def get_queryset(self):
@@ -14,6 +14,6 @@ class ServiceCategoryListView(ListAPIView):
         )
 
 
-class ServiceDetailView(RetrieveAPIView):
+class ServiceViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset = Service.objects.filter(is_active=True)
     serializer_class = ServiceSerializer

@@ -1,7 +1,8 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 from . import views
 
-urlpatterns = [
-    path("services/", views.ServiceCategoryListView.as_view(), name="service-list"),
-    path("services/<int:pk>/", views.ServiceDetailView.as_view(), name="service-detail"),
-]
+router = DefaultRouter()
+router.register("services", views.ServiceCategoryViewSet, basename="service-category")
+router.register("services-detail", views.ServiceViewSet, basename="service")
+
+urlpatterns = router.urls
