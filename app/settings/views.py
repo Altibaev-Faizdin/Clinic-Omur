@@ -15,5 +15,5 @@ class ServiceCategoryViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 
 class ServiceViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
-    queryset = Service.objects.filter(is_active=True)
+    queryset = Service.objects.all()
     serializer_class = ServiceSerializer
