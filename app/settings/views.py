@@ -5,13 +5,7 @@ from .serializers import ServiceCategorySerializer, ServiceSerializer
 
 class ServiceCategoryViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = ServiceCategorySerializer
-
-    def get_queryset(self):
-        return (
-            ServiceCategory.objects
-            .all()
-            .prefetch_related("services")
-        )
+    queryset = ServiceCategory.objects.all().prefetch_related("services")
 
 
 class ServiceViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
