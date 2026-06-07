@@ -15,5 +15,5 @@ urls = [
 ]
 urlpatterns = [
     path("api/", include(urls)),
-    path("api/landing/v1/", include("app.services.urls")),
+    path("api/landing/v1/", include("app.settings.urls")),
 ]
