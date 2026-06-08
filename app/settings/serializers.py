@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ServiceCategory, Service
+from .models import ServiceCategory, Service, Specialist
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -24,3 +24,9 @@ class ServiceCategorySerializer(serializers.ModelSerializer):
     def get_services(self, obj):
         active = obj.services.filter(is_active=True)
         return ServiceSerializer(active, many=True, context=self.context).data
+    
+
+class SpecialistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Specialist
+        fields = ("id", "full_name", "specialization", "experience", "photo", "order")

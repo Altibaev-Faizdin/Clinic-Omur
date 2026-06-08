@@ -4,5 +4,6 @@ from . import views
 router = DefaultRouter()
 router.register("services", views.ServiceCategoryViewSet, basename="service-category")
 router.register("services-detail", views.ServiceViewSet, basename="service")
+router.register("specialists", views.SpecialistViewSet, basename="specialist")
 
 urlpatterns = router.urls

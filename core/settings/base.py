@@ -1,9 +1,7 @@
 import os
 from pathlib import Path
 from corsheaders.defaults import default_headers, default_methods
-from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
-
 from core.settings.jazzmin import JAZZMIN_SETTINGS
 
 load_dotenv()
@@ -13,10 +11,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-secret-key")
 
 PRODUCTION = os.getenv("PRODUCTION", "False")
-DEBUG = os.getenv("PRODUCTION", "False")
+DEBUG = os.getenv("DEBUG", "True")
 
 if PRODUCTION:
-    from .production import * 
+    from .production import *
 else:
     from .development import *
 
@@ -34,8 +32,7 @@ DJANGO_APPS = [
 ]
 
 MY_APPS = [
-    "app.settings",
-
+    "app.settings.apps.SettingsConfig",
 ]
 
 LIBRARY_APPS = [
@@ -94,7 +91,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru"
 TIME_ZONE = "Asia/Bishkek"
-
 USE_I18N = True
 USE_TZ = True
 

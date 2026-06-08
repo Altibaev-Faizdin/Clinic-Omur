@@ -38,3 +38,21 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Specialist(models.Model):
+    full_name = models.CharField(max_length=255, verbose_name="ФИО")
+    specialization = models.CharField(max_length=255, verbose_name="Специализация")
+    experience = models.PositiveIntegerField(verbose_name="Стаж (лет)")
+    photo = models.ImageField(upload_to="specialists/", verbose_name="Фото")
+    is_active = models.BooleanField(default=True, verbose_name="Активен")
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
+
+    class Meta:
+        verbose_name = "Специалист"
+        verbose_name_plural = "Специалисты"
+        ordering = ["order"]
+
+    def __str__(self):
+        return self.full_name
