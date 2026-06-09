@@ -27,7 +27,6 @@ class ServiceAdmin(TabbedTranslationAdmin):
 
 @admin.register(Specialist)
 class SpecialistAdmin(TabbedTranslationAdmin):
-    list_display = ("full_name", "specialization", "experience", "is_active", "order")
-    list_filter = ("is_active",)
-    list_editable = ("is_active", "order")
+    list_display = ("full_name", "specialization", "experience", "order")
+    list_editable = ("order",)
     search_fields = ("full_name", "specialization")

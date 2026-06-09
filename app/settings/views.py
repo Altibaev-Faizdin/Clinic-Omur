@@ -22,5 +22,5 @@ class ServiceViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
 
 class SpecialistViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
-    queryset = Specialist.objects.filter(is_active=True)
+    queryset = Specialist.objects.all()
     serializer_class = SpecialistSerializer
